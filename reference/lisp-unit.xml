@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE book [
+<!ELEMENT book (chapter*)>
+<!ELEMENT chapter (title,type,arguments?,package?,description,seealso*,link*,section,file?)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT arguments (#PCDATA)>
+<!ELEMENT package (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT seealso (#PCDATA)>
+<!ELEMENT link (#PCDATA)>
+<!ELEMENT section (#PCDATA)>
+<!ELEMENT file (#PCDATA)>
+]>
+
+<book>
+
+<chapter>
+<title>define-test</title>
+<type>Macro</type>
+<arguments>define-test NAME &body FORM*</arguments>
+<package>lisp-unit</package>
+<description>
+NAME という名前のテストを定義します。
+定義されるテストは現在の *package* に関連付けられ、run-tests などで実行
+されると FORM* を実行します。
+</description>
+<seealso></seealso>
+<link></link>
+<section>その他</section>
+<file>lisp-unit.l</file>
+</chapter>
+
+<chapter>
+<title>get-tests</title>
+<type>Function</type>
+<arguments>get-tests &amp;optional PACKAGE</arguments>
+<package>lisp-unit</package>
+<description>
+Returns list of test for PACKAGE.
+</description>
+<seealso></seealso>
+<link></link>
+<section>その他</section>
+<file>lisp-unit.l</file>
+</chapter>
+
+<chapter>
+<title>get-test-code</title>
+<type>Function</type>
+<arguments>get-test-code NAME &amp;optional PACKAGE</arguments>
+<package>lisp-unit</package>
+<description>
+Returns test code of test NAME.
+</description>
+<seealso></seealso>
+<link></link>
+<section>その他</section>
+<file>lisp-unit.l</file>
+</chapter>
+
+<chapter>
+<title>remove-all-tests</title>
+<type>Function</type>
+<arguments>remove-all-tests &amp;optional PACKAGE</arguments>
+<package>lisp-unit</package>
+<description>
+Removes all tests for given PACKAGE.
+</description>
+<seealso></seealso>
+<link></link>
+<section>その他</section>
+<file>lisp-unit.l</file>
+</chapter>
+
+<chapter>
+<title>remove-tests</title>
+<type>Function</type>
+<arguments>remove-tests TESTS &amp;optional PACKAGE</arguments>
+<package>lisp-unit</package>
+<description>
+Removes tests specified in TESTS from PACKAGE.
+</description>
+<seealso></seealso>
+<link></link>
+<section>その他</section>
+<file>lisp-unit.l</file>
+</chapter>
+
+
+<chapter>
+<title>run-all-tests</title>
+<type>Macro</type>
+<arguments>run-all-tests PACKAGE</arguments>
+<package>lisp-unit</package>
+<description>
+Runs all tests for PACKAGE.
+</description>
+<seealso></seealso>
+<link></link>
+<section>その他</section>
+<file>lisp-unit.l</file>
+</chapter>
+
+
+<chapter>
+<title>run-tests</title>
+<type>Macro</type>
+<arguments>run-tests NAME*</arguments>
+<package>lisp-unit</package>
+<description>
+Runs tests specified by NAME*.
+</description>
+<seealso></seealso>
+<link></link>
+<section>その他</section>
+<file>lisp-unit.l</file>
+</chapter>
+
+</book>
