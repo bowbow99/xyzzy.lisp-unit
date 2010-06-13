@@ -333,7 +333,7 @@ For more information, see lisp-unit.html.
                   name form expected actual extras)))
 
 (defun test-passed-p (type expected actual test)
-  (ecase type
+  (case type
     (:error
      (or (eql (car actual) (car expected))
          (typep (car actual) (car expected))))
@@ -348,6 +348,8 @@ For more information, see lisp-unit.html.
               (car expected)))
     (:result
      (logically-equal (car actual) (car expected)))
+    (t
+     (error "Unknown type of test: ~S" type))
     ))
 
 
