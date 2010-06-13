@@ -397,9 +397,9 @@ For more information, see lisp-unit.html.
 (defun get-failure-message (type)
   (case type
     (:error "~&~@[Should have signalled ~{~S~^; ~} but saw~] ~{~S~^; ~}")
-    (:macro "~&Should have expanded to ~{~S~^; ~} ~<~%~:;but saw ~{~S~^; ~}~>")
-    (:output "~&Should have printed ~{~S~^; ~} ~<~%~:;but saw ~{~S~^; ~}~>")
-    (t "~&Expected ~{~S~^; ~} ~<~%~:;but saw ~{~S~^; ~}~>")
+    (:macro "~&Should have expanded to ~{~S~^; ~}~%but saw ~{~S~^; ~}")
+    (:output "~&Should have printed ~{~S~^; ~}~%but saw ~{~S~^; ~}")
+    (t "~&Expected ~{~S~^; ~} ~%but saw ~{~S~^; ~}")
     ))
 
 (defun show-failure (type msg name form expected actual extras)
