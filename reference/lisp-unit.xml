@@ -117,4 +117,150 @@ Runs tests specified by NAME*.
 <file>lisp-unit.l</file>
 </chapter>
 
+
+<chapter>
+<title>assert-eq</title>
+<type>Macro</type>
+<arguments>assert-eq EXPECTED FORM EXTRA*</arguments>
+<package>lisp-unit</package>
+<description>
+FORM の評価結果が EXPECTED と eq でなければ fail。
+</description>
+<seealso>assert-equal</seealso>
+<link></link>
+<section>その他</section>
+<file>lisp-unit.l</file>
+</chapter>
+
+
+
+<chapter>
+<title>assert-eql</title>
+<type>Macro</type>
+<arguments>assert-eql EXPECTED FORM EXTRA*</arguments>
+<package>lisp-unit</package>
+<description>
+FORM の評価結果が EXPECTED と eql でなければ fail。
+</description>
+<seealso>assert-equal</seealso>
+<link></link>
+<section>その他</section>
+<file>lisp-unit.l</file>
+</chapter>
+
+<chapter>
+<title>assert-equal</title>
+<type>Macro</type>
+<arguments>assert-equal EXPECTED FORM EXTRA*</arguments>
+<package>lisp-unit</package>
+<description>
+FORM の評価結果が EXPECTED と equal でなければ fail。
+</description>
+<seealso></seealso>
+<link></link>
+<section>その他</section>
+<file>lisp-unit.l</file>
+</chapter>
+
+<chapter>
+<title>assert-equalp</title>
+<type>Macro</type>
+<arguments>assert-equalp EXPECTED FORM EXTRA*</arguments>
+<package>lisp-unit</package>
+<description>
+FORM の評価結果が EXPECTED と equalp でなければ fail。
+</description>
+<seealso>assert-equal</seealso>
+<link></link>
+<section>その他</section>
+<file>lisp-unit.l</file>
+</chapter>
+
+<chapter>
+<title>assert-equality</title>
+<type>Macro</type>
+<arguments>assert-equality PREDICATE EXPECTED FORM EXTRA*</arguments>
+<package>lisp-unit</package>
+<description>
+FORM の評価結果が EXPECTED と PREDICATE で比較して true でなければ fail。
+</description>
+<seealso>assert-equal</seealso>
+<link></link>
+<section>その他</section>
+<file>lisp-unit.l</file>
+</chapter>
+
+<chapter>
+<title>assert-true</title>
+<type>Macro</type>
+<arguments>assert-true FORM EXTRA*</arguments>
+<package>lisp-unit</package>
+<description>
+FORM の評価結果が true (non-nil) でなければ fail。
+</description>
+<seealso></seealso>
+<link></link>
+<section>その他</section>
+<file>lisp-unit.l</file>
+</chapter>
+
+<chapter>
+<title>assert-false</title>
+<type>Macro</type>
+<arguments>assert-false FORM EXTRA*</arguments>
+<package>lisp-unit</package>
+<description>
+FORM の評価結果が false (nil) でなければ fail。
+</description>
+<seealso>assert-true</seealso>
+<link></link>
+<section>その他</section>
+<file>lisp-unit.l</file>
+</chapter>
+
+
+<chapter>
+<title>assert-print</title>
+<type>Macro</type>
+<arguments>assert-print OUTPUT FORM EXTRA*</arguments>
+<package>lisp-unit</package>
+<description>
+FORM を実行した際に *standard-output* に OUTPUT を出力しなければ fail。
+</description>
+<seealso></seealso>
+<link></link>
+<section>その他</section>
+<file>lisp-unit.l</file>
+</chapter>
+
+<chapter>
+<title>assert-expands</title>
+<type>Macro</type>
+<arguments>assert-expands EXPANSION FORM EXTRA*</arguments>
+<package>lisp-unit</package>
+<description>
+FORM を macroexpand-1 した結果が EXPANSION と equal でなければ fail。
+</description>
+<seealso></seealso>
+<link></link>
+<section>その他</section>
+<file>lisp-unit.l</file>
+</chapter>
+
+<chapter>
+<title>assert-error</title>
+<type>Macro</type>
+<arguments>assert-error CONDITION-TYPE FORM EXTRA*</arguments>
+<package>lisp-unit</package>
+<description>
+FORM を実行した際に CONDITION-TYPE のコンディションが投げられなければ
+fail。
+</description>
+<seealso></seealso>
+<link></link>
+<section>その他</section>
+<file>lisp-unit.l</file>
+</chapter>
+
+
 </book>
