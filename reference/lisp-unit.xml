@@ -18,7 +18,7 @@
 <chapter>
 <title>define-test</title>
 <type>Macro</type>
-<arguments>define-test NAME &body FORM*</arguments>
+<arguments>define-test NAME &amp;body FORM*</arguments>
 <package>lisp-unit</package>
 <description>
 NAME という名前のテストを定義します。
