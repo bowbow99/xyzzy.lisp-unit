@@ -343,7 +343,7 @@ For more information, see lisp-unit.html.
     (:macro
      (equal (car actual) (car expected)))
     (:output
-     (string= (string-trim '(#\newline #\return #\space) 
+     (string= (string-trim '(#\LFD #\RET #\SPC)
                            (car actual))
               (car expected)))
     (:result
