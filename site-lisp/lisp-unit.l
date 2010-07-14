@@ -442,4 +442,17 @@ For more information, see lisp-unit.html.
        (subsetp l2 l1 :test test)))
 
 
+#+xyzzy
+(setf (get 'assert-eq 'ed:lisp-indent-hook) 2
+      (get 'assert-eql 'ed:lisp-indent-hook) 2
+      (get 'assert-equal 'ed:lisp-indent-hook) 2
+      (get 'assert-equalp 'ed:lisp-indent-hook) 2
+      (get 'assert-equality 'ed:lisp-indent-hook) 3
+      (get 'assert-true 'ed:lisp-indent-hook) 1
+      (get 'assert-false 'ed:lisp-indent-hook) 1
+      (get 'assert-prints 'ed:lisp-indent-hook) 2
+      (get 'assert-expands 'ed:lisp-indent-hook) 2
+      (get 'assert-error 'ed:lisp-indent-hook) 2)
+
+
 (provide "lisp-unit")
