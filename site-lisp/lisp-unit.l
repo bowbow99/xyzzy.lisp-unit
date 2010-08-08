@@ -123,6 +123,7 @@ For more information, see lisp-unit.html.
           remove-all-tests
           remove-tests
           logically-equal
+          form-equal
           set-equal
           use-debugger
           with-test-listener
