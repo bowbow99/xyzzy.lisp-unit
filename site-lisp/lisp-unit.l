@@ -117,6 +117,7 @@ For more information, see lisp-unit.html.
           assert-false
           assert-equality
           assert-prints
+          assert-type
           get-test-code
           get-tests
           remove-all-tests
@@ -194,6 +195,9 @@ For more information, see lisp-unit.html.
 
 (defmacro assert-true (form &rest extras)
   (expand-assert :result form form t extras))
+
+(defmacro assert-type (type form &rest extras)
+  (expand-assert :type form form `',type extras))
 
 
 (defun expand-assert (type form body expected extras &key (test #'eql))
@@ -348,6 +352,8 @@ For more information, see lisp-unit.html.
               (car expected)))
     (:result
      (logically-equal (car actual) (car expected)))
+    (:type
+     (typep (car actual) (car expected)))
     (t
      (error "Unknown type of test: ~S" type))
     ))
@@ -399,6 +405,7 @@ For more information, see lisp-unit.html.
     (:error "~&~@[Should have signalled ~{~S~^; ~} but saw~] ~{~S~^; ~}")
     (:macro "~&Should have expanded to ~{~S~^; ~}~%but saw ~{~S~^; ~}")
     (:output "~&Should have printed ~{~S~^; ~}~%but saw ~{~S~^; ~}")
+    (:type "~&should be a(n) ~{~S~^; ~}~%but saw ~{~S~^; ~}")
     (t "~&Expected ~{~S~^; ~} ~%but saw ~{~S~^; ~}")
     ))
 
