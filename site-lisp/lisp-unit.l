@@ -345,7 +345,7 @@ For more information, see lisp-unit.html.
      (and (<= (length expected) (length actual))
           (every test expected actual)))
     (:macro
-     (equal (car actual) (car expected)))
+     (form-equal (car expected) (car actual)))
     (:output
      (string= (string-trim '(#\LFD #\RET #\SPC)
                            (car actual))
@@ -447,6 +447,37 @@ For more information, see lisp-unit.html.
        (listp l2)
        (subsetp l1 l2 :test test)
        (subsetp l2 l1 :test test)))
+
+;;; ACTUAL に現れる gensym'ed symbol を EXPECTED では uninterned symbol
+;;; (#:hoge とか）で指定できる equal。
+;;; EXPECTED 内に同じ名前の uninterned symbol が複数あったら、ACTUAL の
+;;; gensym'ed symbol も全て同じものでないといけない。
+;;;
+;;; 例（全部 true になる）
+;;; ----------------------
+;;; (form-equal '#:foo
+;;;             (gensym))
+;;; (form-equal '(#:foo #:foo)
+;;;             (let ((x (gensym)))  (list x x)))
+;;; (form-equal `(#:foo #:bar #:foo)
+;;;             (let ((a (gensym)) (b (gensym)))  (list a b a)))
+
+(defun form-equal (expected actual)
+  (let ((seen (make-hash-table :test #'equal)))
+    (macrolet ((seen-e () `(gethash e-name seen))
+               (gensymp (x) `(and (symbolp ,x) (null (symbol-package ,x)))))
+      (labels ((form-equal-1 (e a)
+                 (cond ((null e) (null a))
+                       ((gensymp e)
+                        (and (gensymp a)
+                             (let ((e-name (symbol-name e)))
+                               (or (string-equal e-name (symbol-name a))
+                                   (if (seen-e) (eq (seen-e) a) (setf (seen-e) a))))))
+                       ((atom e) (equal e a))
+                       ((consp e) (and (form-equal-1 (car e) (car a))
+                                       (form-equal-1 (cdr e) (cdr a))))
+                       (t (warn "Should not reach here: ~S: ~S" e a)))))
+        (form-equal-1 expected actual)))))
 
 
 #+xyzzy
