@@ -411,13 +411,13 @@ For more information, see lisp-unit.html.
     ))
 
 (defun show-failure (type msg name form expected actual extras)
-  (format t "~&~@[~S: ~]~S failed: " name form)
-  (format t msg expected actual)
-  (format t "~{~&   ~S => ~S~}~%" extras)
+  (format *trace-output* "~&~@[~S: ~]~S failed: " name form)
+  (format *trace-output* msg expected actual)
+  (format *trace-output* "~{~&   ~S => ~S~}~%" extras)
   type)
 
 (defun show-summary (name test-count pass-count &optional error-count)
-  (format t "~&~A: ~S assertions passed, ~S failed~@[, ~S execution errors~]."
+  (format *trace-output* "~&~A: ~S assertions passed, ~S failed~@[, ~S execution errors~]."
           name pass-count (- test-count pass-count) error-count))
 
 (defun collect-form-values (form values)
