@@ -379,7 +379,7 @@ For more information, see lisp-unit.html.
 
 (defun run-test-thunk (*test-name* thunk)
   (if (null thunk)
-      (format t "~&    Test ~S not found" *test-name*)
+      (format *trace-output* "~&    Test ~S not found" *test-name*)
     (prog ((*test-count* 0)
            (*pass-count* 0)
            (error-count 0))
@@ -387,7 +387,7 @@ For more information, see lisp-unit.html.
           ((error #'(lambda (e)
                       (let ((*print-escape* nil))
                         (setq error-count 1)         
-                        (format t "~&    ~S: ~W" *test-name* e))
+                        (format *trace-output* "~&    ~S: ~W" *test-name* e))
                       (if (use-debugger-p e) e (go exit)))))
         (funcall thunk)
         (show-summary *test-name* *test-count* *pass-count*))
