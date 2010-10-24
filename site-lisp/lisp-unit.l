@@ -136,7 +136,7 @@ For more information, see lisp-unit.html.
 
 (defparameter *test-listener* nil)
 
-(defparameter *tests* (make-hash-table))
+(defvar *tests* (make-hash-table))
 
 ;;; Used by RUN-TESTS to collect summary statistics
 (defvar *test-count* 0)
