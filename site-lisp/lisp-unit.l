@@ -105,7 +105,7 @@ For more information, see lisp-unit.html.
 (in-package :lisp-unit)
 
 (export '(define-test
-          run-all-tests
+          run-tests-from
           run-tests
           assert-eq
           assert-eql
@@ -226,7 +226,7 @@ For more information, see lisp-unit.html.
 
 ;;; RUN-TESTS
 
-(defmacro run-all-tests (package &rest tests)
+(defmacro run-tests-from (package &rest tests)
   `(let ((*package* (find-package ',package)))
      (run-tests
       ,@(mapcar #'(lambda (test) (find-symbol (symbol-name test) package))
