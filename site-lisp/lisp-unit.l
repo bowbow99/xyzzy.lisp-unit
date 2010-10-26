@@ -226,14 +226,14 @@ For more information, see lisp-unit.html.
 
 ;;; RUN-TESTS
 
-(defmacro run-tests-from (package &rest tests)
-  `(let ((*package* (find-package ',package)))
-     (run-tests
-      ,@(mapcar #'(lambda (test) (find-symbol (symbol-name test) package))
-          tests))))
+(defun run-tests-from (package &rest test-names)
+  (let ((*package* (find-package package)))
+    (apply #'run-tests
+           (mapcar (lambda (name) (find-symbol (symbol-name name) package)) test-names))))
 
-(defmacro run-tests (&rest names)
-  `(run-test-thunks (get-test-thunks ,(if (null names) '(get-tests *package*) `',names))))
+(defun run-tests (&rest test-names)
+  (run-test-thunks
+   (get-test-thunks (if (null test-names) (get-tests *package*) test-names))))
 
 (defun get-test-thunks (names &optional (package *package*))
   (mapcar #'(lambda (name) (get-test-thunk name package))
