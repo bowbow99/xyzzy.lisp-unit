@@ -226,14 +226,65 @@ For more information, see lisp-unit.html.
 
 ;;; RUN-TESTS
 
+(defun %read-package (&optional default)
+  (find-package
+   (ed:completing-read "Package: "
+                       (mapcar #'package-name (list-all-packages))
+                       :must-match t)))
+
+(defun %read-test-names (package)
+  (let ((all-tests (cons "" (mapcar #'symbol-name (get-tests package))))
+        name names)
+    (macrolet ((read-name ()
+                 '(setq name (ed:completing-read "Test: " all-tests :must-match t))))
+      (while (not (string= (read-name) ""))
+        (push (find-symbol name package) names)))
+    names))
+
+(defun %prefixed-p ()
+  (or ed:*prefix-args* ed:*prefix-value*))
+
+(defun %get-target-package ()
+  (or (when (stringp ed:*buffer-package*)
+        (find-package ed:*buffer-package*))
+      *package*))
+
+(defun %get-result-buffer-stream ()
+  (let ((buffer (ed:get-buffer-create "*Test Result*")))
+    (ed:setup-temp-buffer buffer)
+    (ed:erase-buffer buffer)
+    (ed:make-buffer-stream buffer)))
+
+
 (defun run-tests-from (package &rest test-names)
-  (let ((*package* (find-package package)))
+  (ed:interactive
+      (let ((pkg (%read-package)))
+        (list* pkg
+               (when (%prefixed-p)
+                 (%read-test-names pkg)))))
+  (let ((*package* (find-package package))
+        (*trace-output* (or (when (ed:interactive-p)
+                              (%get-result-buffer-stream))
+                            *trace-output*)))
     (apply #'run-tests
-           (mapcar (lambda (name) (find-symbol (symbol-name name) package)) test-names))))
+           (mapcar (lambda (name)
+                     (find-symbol (symbol-name name) package))
+             test-names))))
 
 (defun run-tests (&rest test-names)
-  (run-test-thunks
-   (get-test-thunks (if (null test-names) (get-tests *package*) test-names))))
+  (ed:interactive
+      (when (%prefixed-p)
+        (%read-test-names (%get-target-package))))
+  (let ((*package* (or (when (ed:interactive-p)
+                         (%get-target-package))
+                       *package*))
+        (*trace-output* (or (when (ed:interactive-p)
+                              (%get-result-buffer-stream))
+                            *trace-output*)))
+    (run-test-thunks
+     (get-test-thunks (if (null test-names)
+                        (get-tests *package*)
+                        test-names)))))
 
 (defun get-test-thunks (names &optional (package *package*))
   (mapcar #'(lambda (name) (get-test-thunk name package))
