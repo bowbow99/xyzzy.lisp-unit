@@ -539,6 +539,7 @@ For more information, see lisp-unit.html.
       (get 'assert-equal 'ed:lisp-indent-hook) 2
       (get 'assert-equalp 'ed:lisp-indent-hook) 2
       (get 'assert-equality 'ed:lisp-indent-hook) 3
+      (get 'assert-type 'ed:lisp-indent-hook) 2
       (get 'assert-true 'ed:lisp-indent-hook) 1
       (get 'assert-false 'ed:lisp-indent-hook) 1
       (get 'assert-prints 'ed:lisp-indent-hook) 2
