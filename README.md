@@ -1,19 +1,19 @@
-‚±‚ê‚Í‰½
+ã“ã‚Œã¯ä½•
 ========
-[lisp-unit.lisp] ‚ğ xyzzy ‚Å“®‚­‚æ‚¤‚É‚µ‚½‚Â‚¢‚Å‚É”÷–­‚É‰ü‘¢‚µ‚½‚à‚Ì‚Å‚·B
+[lisp-unit.lisp] ã‚’ xyzzy ã§å‹•ãã‚ˆã†ã«ã—ãŸã¤ã„ã§ã«å¾®å¦™ã«æ”¹é€ ã—ãŸã‚‚ã®ã§ã™ã€‚
 
   [lisp-unit.lisp] http://www.cs.northwestern.edu/academics/courses/325/readings/lisp-unit.html
 
-ƒCƒ“ƒXƒg[ƒ‹
+ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 ============
-iH–’†j
+ï¼ˆå·¥äº‹ä¸­ï¼‰
 
-g‚¢•û
+ä½¿ã„æ–¹
 ======
-TODO: ‚¿‚á‚ñ‚Æ‘‚­‚×‚µ
+TODO: ã¡ã‚ƒã‚“ã¨æ›¸ãã¹ã—
 
     ;; 2011-03-31
-    ;; ‚Æ‚è‚ ‚¦‚¸Œ»ó‚Å‚à“®‚©‚·‚±‚Æ‚Í‚Å‚«‚é‚Ì‚Å‚»‚ÌƒTƒ“ƒvƒ‹
+    ;; ã¨ã‚Šã‚ãˆãšç¾çŠ¶ã§ã‚‚å‹•ã‹ã™ã“ã¨ã¯ã§ãã‚‹ã®ã§ãã®ã‚µãƒ³ãƒ—ãƒ«
     (load "~/work/xyzzy.lisp-unit/site-lisp/lisp-unit.l")
     t
     
@@ -31,7 +31,7 @@ TODO: ‚¿‚á‚ñ‚Æ‘‚­‚×‚µ
     
     (let ((*trace-output* *standard-output*))
       (run-tests 'add))
-        add: ŠÖ”‚ª’è‹`‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ: add
+        add: é–¢æ•°ãŒå®šç¾©ã•ã‚Œã¦ã„ã¾ã›ã‚“: add
     
     (defun add (x y) (* x y))
     add
@@ -54,16 +54,16 @@ TODO: ‚¿‚á‚ñ‚Æ‘‚­‚×‚µ
     add: 2 assertions passed, 0 failed.
 
 
-’ˆÓ“_AŠù’m‚Ì–â‘è‚È‚Ç
+æ³¨æ„ç‚¹ã€æ—¢çŸ¥ã®å•é¡Œãªã©
 ======================
 
-ƒoƒO•ñA¿–âA—v–]‚È‚Ç‚Í [GitHubIssues] ‚© [@bowbow99] ‚ ‚½‚è‚Ö‚¨Šè‚¢
-‚µ‚Ü‚·B
+ãƒã‚°å ±å‘Šã€è³ªå•ã€è¦æœ›ãªã©ã¯ [GitHubIssues] ã‹ [@bowbow99] ã‚ãŸã‚Šã¸ãŠé¡˜ã„
+ã—ã¾ã™ã€‚
 
   [GitHubIssues] http://github.com/bowbow99/xyzzy.lisp-unit/issues
   [@bowbow99] http://twitter.com/bowbow99
 
 
-ƒ‰ƒCƒZƒ“ƒX
+ãƒ©ã‚¤ã‚»ãƒ³ã‚¹
 ==========
 MIT/X
