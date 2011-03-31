@@ -129,7 +129,6 @@ For more information, see lisp-unit.html.
           with-test-listener
           ))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Globals
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -291,8 +290,8 @@ For more information, see lisp-unit.html.
     names))
 
 (defun get-test-thunk (name package)
-  (assert (get-test-code name package) (name package)
-          "No test defined for ~S in package ~S" name package)
+  (unless (get-test-code name package)
+    (error "No test defined for ~S in package ~S" name package))
   (list name (coerce `(lambda () ,@(get-test-code name)) 'function)))
 
 (defun use-debugger (&optional (flag t))
