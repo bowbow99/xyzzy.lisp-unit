@@ -2,7 +2,7 @@
 ========
 [lisp-unit.lisp] を xyzzy で動くようにしたついでに微妙に改造したものです。
 
-  [lisp-unit.lisp] http://www.cs.northwestern.edu/academics/courses/325/readings/lisp-unit.html
+  [lisp-unit.lisp]: http://www.cs.northwestern.edu/academics/courses/325/readings/lisp-unit.html
 
 インストール
 ============
@@ -60,8 +60,8 @@ TODO: ちゃんと書くべし
 バグ報告、質問、要望などは [GitHubIssues] か [@bowbow99] あたりへお願い
 します。
 
-  [GitHubIssues] http://github.com/bowbow99/xyzzy.lisp-unit/issues
-  [@bowbow99] http://twitter.com/bowbow99
+  [GitHubIssues]: http://github.com/bowbow99/xyzzy.lisp-unit/issues
+  [@bowbow99]: http://twitter.com/bowbow99
 
 
 ライセンス
