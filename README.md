@@ -20,10 +20,6 @@ TODO: ちゃんと書くべし
     (use-package :lisp-unit)
     t
     
-    (symbol-plist 'define-test)
-    nil
-    
-    
     (define-test add
     	     (assert-eql 1 (add 0 1))
     	     (assert-eql 2 (add 1 1)))
